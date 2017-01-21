@@ -18,16 +18,21 @@ namespace SVGAtlasGenerator
             watcher.IncludeSubdirectories = true;
             watcher.NotifyFilter = NotifyFilters.LastWrite;
 
-            while(true)
-            {
-                var result = watcher.WaitForChanged(WatcherChangeTypes.Changed);
+            watcher.Created += HandleEvent;
+            watcher.Changed += HandleEvent;
+            watcher.EnableRaisingEvents = true;
 
-                Console.WriteLine($"Received {result.Name}");
-                fileProcessor.ProcessFile(result.Name);
-                Console.WriteLine("Observing...");
-            }
+            Console.WriteLine($"Observing... {directory}");
+            Console.WriteLine("Press any key to quit...");
+            Console.ReadKey();
+        }
 
-            
+        private void HandleEvent(object sender, FileSystemEventArgs e)
+        {
+            var name = e.Name;
+            Console.WriteLine($"Processing {name}...");
+            fileProcessor.ProcessFile(name);
+            Console.WriteLine("Done.");
         }
 
         public void Run(string arg, bool observe)
