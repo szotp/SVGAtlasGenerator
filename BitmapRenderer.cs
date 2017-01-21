@@ -113,6 +113,8 @@ namespace SVGAtlasGenerator
                         break;
                 }
 
+                xMax += 1;
+                yMax += 1;
                 srcRect = Rectangle.FromLTRB(xMin, yMin, xMax, yMax);
             }
             finally
