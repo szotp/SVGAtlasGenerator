@@ -1,6 +1,8 @@
 # SVGAtlasGenerator
 Tool to automatically generate texture atlases from svg files. 
 
+![alt tag](example.png)
+
 ###How it works:
 
 1. Observe given directory for changes to svg files.
@@ -10,5 +12,3 @@ Tool to automatically generate texture atlases from svg files.
 
 ###More ideas:
 1. Perhaps it would be simpler to just scan the directory when the game starts.
-
-![alt tag](example.png)
